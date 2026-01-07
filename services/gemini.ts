@@ -16,8 +16,13 @@ Reglas:
 
 export const sendMessageToGemini = async (message: string): Promise<string> => {
   try {
-    // Verificamos de forma segura la existencia de la API Key para evitar ReferenceErrors
     const apiKey = (typeof process !== 'undefined' && process.env.API_KEY) || "";
+    
+    // Si no hay API KEY, devolvemos un mensaje amable en lugar de romper la app
+    if (!apiKey) {
+      return "Lo siento, el asistente virtual no está disponible en este momento. Por favor, contacte directamente por WhatsApp.";
+    }
+
     const ai = new GoogleGenAI({ apiKey });
     
     const response: GenerateContentResponse = await ai.models.generateContent({
