@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Dr. Alex | Biomecánica & Estructura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --clinical-bg: #ffffff;
+        --clinical-text: #0f172a;
+        --clinical-blue: #0ea5e9;
+      }
+      
+      /* AGGRESSIVE FIX for mobile interaction */
+      * {
+          -webkit-tap-highlight-color: transparent !important;
+          outline: none !important;
+      }
+      
+      html {
+        /* Remove default scroll behavior to let JS handle it perfectly */
+        scroll-behavior: auto; 
+        -webkit-overflow-scrolling: touch;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--clinical-bg);
+        color: var(--clinical-text);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+        /* REVERTED: Removed global transform to fix Fixed Positioning of Navbar/Menu */
+      }
+
+      .font-heading { font-family: 'Manrope', sans-serif; }
+      
+      /* Slow, Elegant Reveal */
+      .reveal-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+        will-change: opacity, transform; /* Hint to browser safely */
+      }
+      
+      .reveal-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hide Scrollbar but keep functionality */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      ::selection {
+        background: #0f172a; 
+        color: white;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="antialiased relative bg-white">
+    <div id="root"></div>
+  </body>
+</html>
