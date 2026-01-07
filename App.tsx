@@ -7,6 +7,7 @@ import {
   Testimonials, 
   Contact
 } from './components/LandingSections';
+import { ChatWidget } from './components/ChatWidget';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Testimonials id="historias" />
         <Contact id="contacto" />
       </main>
+      <ChatWidget />
     </div>
   );
 }
