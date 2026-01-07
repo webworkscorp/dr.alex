@@ -1,7 +1,5 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 const SYSTEM_INSTRUCTION = `
 Eres el Asistente Clínico Virtual del Dr. Alex (Quiropraxia Avanzada).
 Tu tono es: Profesional, clínico, empático y directo. Eres un experto en triaje básico.
@@ -18,6 +16,10 @@ Reglas:
 
 export const sendMessageToGemini = async (message: string): Promise<string> => {
   try {
+    // Verificamos de forma segura la existencia de la API Key para evitar ReferenceErrors
+    const apiKey = (typeof process !== 'undefined' && process.env.API_KEY) || "";
+    const ai = new GoogleGenAI({ apiKey });
+    
     const response: GenerateContentResponse = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: message,
